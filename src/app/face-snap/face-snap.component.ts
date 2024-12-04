@@ -38,4 +38,5 @@ export class FaceSnapComponent implements OnInit {
     this.userHasSnapped = false;
   }
 
+  protected readonly location = location;
 }
