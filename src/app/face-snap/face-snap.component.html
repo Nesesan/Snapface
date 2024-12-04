@@ -1,5 +1,4 @@
-<div class="face-snap-card-container">
-    <div class="face-snap-card">
+ <div class="face-snap-card" [ngClass]="{snapped: userHasSnapped}">
       <!-- Using string interpolation with "{{ }}" to display the property content in the template-->
       <h1>{{facesnap.title}}</h1>
       @if (facesnap.location){
@@ -14,7 +13,7 @@
       <p>
        <!--Using the event binding with "(click)" to link a method to an event -->
        <button (click)="onSnap()">{{snapButtonText}}</button>
-       {{facesnap.snaps}}
+       <span [ngStyle]="{color: 'rgb(0,'+ facesnap.snaps+',0)'}">{{facesnap.snaps}}</span>
       </p>
   </div>
-</div>
+
