@@ -1,13 +1,15 @@
-<div class="face-snap-card">
-  <!-- Using string interpolation with "{{ }}" to display the property content in the template-->
-  <h1>{{title}}</h1>
-  <!-- Using the attribute binding "[ ]" to link the attribute src to the associate value -->
-  <img [src]="pictureUrl" [alt]="title">
-    <p>{{description}}</p>
-    <p>Created on {{createdAt}}</p>
-    <p>
-      <!--Using the event binding with "(click)" to link a method to an event -->
-      <button (click)="onSnap()">{{snapButtonText}}</button>
-      {{snaps}}
-    </p>
+<div class="face-snap-card-container">
+    <div class="face-snap-card">
+      <!-- Using string interpolation with "{{ }}" to display the property content in the template-->
+      <h1>{{facesnap.title}}</h1>
+      <!-- Using the attribute binding "[ ]" to link the attribute src to the associate value -->
+      <img [src]="facesnap.pictureUrl" [alt]="facesnap.title">
+      <p>{{facesnap.description}}</p>
+      <p>Created on {{facesnap.createdAt}}</p>
+      <p>
+       <!--Using the event binding with "(click)" to link a method to an event -->
+       <button (click)="onSnap()">{{snapButtonText}}</button>
+       {{facesnap.snaps}}
+      </p>
+  </div>
 </div>
