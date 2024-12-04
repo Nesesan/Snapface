@@ -5,5 +5,9 @@
   <img [src]="pictureUrl" [alt]="title">
     <p>{{description}}</p>
     <p>Created on {{createdAt}}</p>
-    <p>{{snaps}}</p>
+    <p>
+      <!--Using the event binding with "(click)" to link a method to an event -->
+      <button (click)="onSnap()">{{snapButtonText}}</button>
+      {{snaps}}
+    </p>
 </div>
