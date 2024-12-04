@@ -30,18 +30,38 @@ export class FaceSnapsService {
       ' If she could speak, she would say, I am the danger, Skyler',
       new Date(),
       150
-    )
+    ),
+     new FaceSnap(
+       'Coffee street',
+       'assets/pictures/Ottawa2.jpg',
+       'I give you my word, i just drunk 2 expressos ✌️' ,
+       new Date(),
+       230
+     ),
+     new FaceSnap(
+       'Let me call you sir!',
+       'assets/pictures/indianCoat.jpg',
+       'In the museum, I felt it calling me secretly: Come, you want to be classy? Come!',
+       new Date(),
+       178
+     )
   ];
 
   getFaceSnaps(): FaceSnap[] {
     return [...this.faceSnaps];
   }
 
-  snapFaceSnapById(faceSnapId:string, snapType: SnapType){
+  getFaceSnapById(faceSnapId:string): FaceSnap {
     const foundFaceSnap = this.faceSnaps.find(faceSnap =>faceSnap.id === faceSnapId);
     if (!foundFaceSnap) {
       throw new Error('Facesnap not found');
     }
-    foundFaceSnap.snap(snapType);
+    return foundFaceSnap;
   }
+
+  snapFaceSnapById(faceSnapId:string, snapType: SnapType){
+    const faceSnap = this.getFaceSnapById(faceSnapId);
+    faceSnap.snap(snapType);
+    }
 }
+
