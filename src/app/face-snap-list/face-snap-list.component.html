@@ -1,0 +1,8 @@
+<!-- @for allows inserting an element into the DOM for each item in the array -->
+<!-- 'track' requires a property that is unique for each item in the array -->
+@for (faceSnap of faceSnaps; track faceSnap.title){
+  <app-face-snap [facesnap]="faceSnap"/>
+}
+
+
+
