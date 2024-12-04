@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FaceSnap} from '../models/face-snap';
 import {DatePipe, NgClass, NgStyle, UpperCasePipe} from '@angular/common';
+import {FaceSnapsService} from '../services/face-snaps.service';
 
 @Component({
   selector: 'app-face-snap',
@@ -15,9 +16,12 @@ import {DatePipe, NgClass, NgStyle, UpperCasePipe} from '@angular/common';
   styleUrl: './face-snap.component.scss'
 })
 export class FaceSnapComponent implements OnInit {
-@Input() facesnap!: FaceSnap;
   userHasSnapped!: boolean;
   snapButtonText!: string;
+
+  constructor(private faceSnapsService: FaceSnapsService) {}
+
+@Input() facesnap!: FaceSnap;
 
   ngOnInit(): void {
     this.snapButtonText = "Oh Snap!"
@@ -33,16 +37,15 @@ export class FaceSnapComponent implements OnInit {
   }
 
   snap(){
-    this.facesnap.addSnap();
+    this.faceSnapsService.snapFaceSnapById(this.facesnap.id, 'snap');
     this.snapButtonText = 'Unsnap..💔';
     this.userHasSnapped = true;
   }
 
   unSnap(){
-    this.facesnap.removeSnap();
+    this.faceSnapsService.snapFaceSnapById(this.facesnap.id, 'unsnap');
     this.snapButtonText = 'Oh Snap ❤️';
     this.userHasSnapped = false;
   }
 
-  protected readonly location = location;
 }
