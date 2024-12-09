@@ -47,7 +47,7 @@ export class FaceSnapsService {
      )
   ];
 
-  getFaceSnaps(): FaceSnap[] {
+  getAllFaceSnaps(): FaceSnap[] {
     return [...this.faceSnaps];
   }
 
@@ -62,6 +62,20 @@ export class FaceSnapsService {
   snapFaceSnapById(faceSnapId:string, snapType: SnapType){
     const faceSnap = this.getFaceSnapById(faceSnapId);
     faceSnap.snap(snapType);
+    }
+
+    addFaceSnap(formValue: {title: string, pictureUrl: string, description: string, location?: string}): void {
+      const faceSnap = new FaceSnap(
+        formValue.title,
+        formValue.pictureUrl,
+        formValue.description,
+        new Date(),
+        0
+      );
+      if (formValue.location) {
+        faceSnap.setLocation(formValue.location);
+      }
+      this.faceSnaps.push(faceSnap);
     }
 }
 
